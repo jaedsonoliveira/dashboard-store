@@ -4,7 +4,7 @@
                     <div class="details">
                     <div class="recent">
                         <div class="cardHeader">
-                            <h2>Relatório</h2>  <a onClick='window.print();' class="btn" href="">Imprimir relatório</a>
+                            <h2>Relatório - produtos em falta</h2>  <a onClick='window.print();' class="btn" href="">Imprimir relatório</a>
                         </div>
                         <table>
                             <thead>

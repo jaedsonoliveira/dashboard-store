@@ -36,12 +36,15 @@
         <?php foreach($list as $item): ?>
             <tr>
             <td><?php echo $item['name']; ?></td>
-            <td><?php echo $item['cod']; ?></td>
             <td>R$ <?php echo number_format($item['price'], 2, ',', '.'); ?></td>
             <td><?php echo $item['quantity']; ?></td>
+            <td>R$ <?php echo number_format($item['total_price'], 2, ',', '.'); ?></td>
+            <td><?php echo date('d/m/Y',strtotime($item['date_sale'])); ?></td>
             <td>
-            <a class="edit" href="<?php echo BASE_URL; ?>estoque/edit/<?php echo $item['id']; ?>"><ion-icon name="create-outline"></ion-icon></a>
-            <a class="delete" href="<?php echo BASE_URL;?>estoque/del"><ion-icon name="trash-outline"></ion-icon></a>
+            <a class="edit" href="<?php echo BASE_URL; ?>venda/edit/<?php echo $item['id']; ?>"><ion-icon name="create-outline"></ion-icon></a>
+            <a class="delete" href="<?php echo BASE_URL; ?>venda/del/<?php echo $item['id']; ?>"><ion-icon name="trash-outline"></ion-icon></a>
+            <a class="invoice"href=""> <img  width="25px" src="<?php echo BASE_URL; ?>assets/images/bill.png" alt="">  </a>
+
             </td>
             </tr>
 

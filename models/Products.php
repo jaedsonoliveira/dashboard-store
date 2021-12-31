@@ -31,6 +31,8 @@ class Products extends Model{
         $sql->bindValue(':quantity', $quantity);
         $sql->bindValue(':min_quantity', $min_quantity);
         $sql->execute();
+
+        header('Location: '.BASE_URL.'estoque');
     }
 
     public function editProduct($cod, $name, $price, $quantity, $min_quantity,$id){
@@ -43,6 +45,8 @@ class Products extends Model{
         $sql->bindValue(':min_quantity', $min_quantity);
         $sql->bindValue(':id', $id);
         $sql->execute();
+
+        header('Location: '.BASE_URL.'estoque');
     }
 
     public function getProduct($id){
@@ -59,6 +63,13 @@ class Products extends Model{
         return $array;
     }
 
+    public function getTotalProducts(){
+        $sql = $this->db->query("SELECT COUNT(*) as c FROM products");
+        $row = $sql->fetch();
+
+        return $row['c'];
+    }
+
     public function getLowQuantityProducts(){
         $array = array();
 
@@ -69,6 +80,17 @@ class Products extends Model{
         if($sql->rowCount() > 0){
             $array = $sql->fetchAll();
         }
+
+        return $array;
+    }
+
+    public function delProduct($id){
+        $array = array();
+
+        $sql = "DELETE FROM products WHERE id = :id";
+        $sql = $this->db->prepare($sql);
+        $sql->bindValue(":id",$id);
+        $sql->execute();
 
         return $array;
     }

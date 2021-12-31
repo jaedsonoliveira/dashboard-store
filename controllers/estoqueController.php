@@ -25,16 +25,17 @@ class estoqueController extends Controller{
         if(!empty($_POST['cod'])){
             $cod = $_POST['cod'];
             $name = $_POST['name'];
-            $price = $_POST['price'];
+            $price = $this->filter_post_money('price');
             $quantity = $_POST['quantity'];
             $min_quantity = $_POST['min_quantity'];
 
             $p->addProduct($cod,$name, $price, $quantity, $min_quantity);
 
-            header('Location '.BASE_URL);
         }
 
         $this->loadTemplate('add', $data);
+        header('Location: '.BASE_URL.'estoque');
+
     }
 
     public function filter_post_money($t){
@@ -66,10 +67,21 @@ class estoqueController extends Controller{
         }
 
         $data['info'] = $p->getProduct($id);
-
+       
         $this->loadTemplate('edit', $data);
+        
     }
 
+    public function del($id){
+        $data = array();
+
+        $p = new Products();
+
+        $data = $p->delProduct($id);
+
        
+        $this->loadTemplate('del', $data);
+        header('Location: '.BASE_URL.'estoque');
+    }
     
 }

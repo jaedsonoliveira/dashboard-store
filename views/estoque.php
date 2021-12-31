@@ -40,7 +40,7 @@
                                 <td><?php echo $item['quantity']; ?></td>
                                 <td>
                                 <a class="edit" href="<?php echo BASE_URL; ?>estoque/edit/<?php echo $item['id']; ?>"><ion-icon name="create-outline"></ion-icon></a>
-                                <a class="delete" href="<?php echo BASE_URL;?>estoque/del"><ion-icon name="trash-outline"></ion-icon></a>
+                                <a class="delete" href="<?php echo BASE_URL;?>estoque/del/<?php echo $item['id']; ?>"><ion-icon name="trash-outline"></ion-icon></a>
                                 </td>
                                 </tr>
 
