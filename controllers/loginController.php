@@ -17,7 +17,7 @@ class loginController extends Controller{
             header('Location: '. BASE_URL);
             exit;
         }else{
-            $data['msg'] = 'Numero ou senha errados';
+            //$data['msg'] = 'Numero ou senha errados';
         }
 
         $this->loadTemplate('login', $data);
